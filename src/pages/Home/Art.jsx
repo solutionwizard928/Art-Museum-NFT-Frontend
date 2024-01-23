@@ -51,7 +51,7 @@ const Art = () => {
             }}
           >
             <SwiperSlide>
-              <div className="xl:max-w-[1300px] md:px-0  w-full mx-auto relative relative group duration-300 ease-in-out">
+              <div className="xl:max-w-[1300px] md:px-0  w-full mx-auto relative group duration-300 ease-in-out">
                 <video
                   ref={videoRef}
                   // autoPlay
