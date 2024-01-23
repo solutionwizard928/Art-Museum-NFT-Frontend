@@ -6,9 +6,9 @@ const About = () => {
   return (
     <>
       <div className="bg-[#5D564C] md:py-28 py-8">
-        <div className="container mx-auto 2xl:px-0 px-4 flex md:justify-between xl:gap-8 gap-5 xl:flex-nowrap flex-wrap xl:max-w-[1200px] w-full items-center">
+        <div className="container mx-auto 2xl:px-0 px-4 flex md:justify-between xl:gap-8 gap-5 lg:flex-nowrap flex-wrap xl:max-w-[1200px] w-full items-center">
           <div className="lg:max-w-[500px] w-full">
-            <h1 className="text-white md:text-[44px] text-[22px] font-normal eb uppercase lg:leading-[52.80px] tracking-[5px] md:mb-10 mb-6">
+            <h1 className="text-white md:text-[44px] text-[22px] font-normal eb uppercase leading-[52.80px] tracking-[5px] md:mb-10 mb-6">
               About artist
             </h1>
             <img src={Artist} alt="Artist" />
@@ -20,10 +20,10 @@ const About = () => {
             <h1 className="text-white md:text-[44px] text-[22px] font-normal eb leading-[52.80px]">
               John Nelson
             </h1>
-            <p className="text-white md:text-lg text-base font-normal lg:leading-[27px] md:mt-2 mb-4">
+            <p className="text-white md:text-lg text-base font-normal leading-[27px] md:mt-2 mb-4">
               Master Pencil Artist
             </p>
-            <p className="text-[#C9C8C8] md:text-lg text-xs font-normal lg:leading-[27px]">
+            <p className="text-[#C9C8C8] md:text-lg text-xs font-normal leading-[27px]">
               In the heart of Washington, D.C., during the 1950s, where the
               city's vibrant culture and struggles converged, there was a young
               African-American boy named John Nelson. <br />

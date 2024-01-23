@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import V1 from "../../assets/images/Home/v1.png";
 
 import { Navigation, Autoplay } from "swiper/modules";
@@ -7,6 +7,23 @@ import airbnb from "./airbnb.mp4";
 import "swiper/css";
 import "swiper/css/navigation";
 const Vacation = () => {
+  const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handleSvgClick = () => {
+    const video = videoRef.current;
+
+    if (video) {
+      if (isPlaying) {
+        video.pause();
+      } else {
+        video.play();
+      }
+
+      setIsPlaying(!isPlaying);
+    }
+  };
+
   return (
     <>
       <div id="airbnb" className="md:pt-28 pt-8 md:pb-28 pb-9 bg-[#B9AD87]">
@@ -24,12 +41,58 @@ const Vacation = () => {
         </p>
         <div className="md:py-0 py-8 2xl:px-0 md:px-16 px-4 relative md:mt-11 mt-6 lg:max-w-[1240px] w-full mx-auto">
           <div className="md:px-12 px-0 relative md:py-20 py-6">
-            
-          <div className="xl:max-w-[1300px] md:px-0  w-full mx-auto">
-              <video autoPlay muted loop id="myVideo">
-                <source src={airbnb} type="video/mp4" />
-            </video>
-              </div>
+            <div className="xl:max-w-[1300px] md:px-0  w-full mx-auto relative group duration-300 ease-in-out">
+              <video
+                ref={videoRef}
+                // autoPlay
+                muted
+                loop
+                id="myVideo"
+                onClick={handleSvgClick}
+              >
+                {/* <source src={airbnb} type="video/mp4" /> */}
+                <source
+                  src="https://jnelson.web.app/assets/airbnb-73a974e9.mp4"
+                  type="video/mp4"
+                />
+              </video>
+              {isPlaying ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="absolute left-0 right-0 top-0 bottom-0 mx-auto my-auto z-20 cursor-pointer opacity-0 group-hover:opacity-100"
+                  width={56}
+                  height={56}
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="#ffffff"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  onClick={handleSvgClick}
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M6 5m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" />
+                  <path d="M14 5m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" />
+                </svg>
+              ) : (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="absolute left-0 right-0 top-0 bottom-0 mx-auto my-auto z-20 cursor-pointer opacity-0 group-hover:opacity-100"
+                  width={60}
+                  height={60}
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="#ffffff"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  onClick={handleSvgClick}
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M7 4v16l13 -8z" />
+                </svg>
+              )}
+            </div>
             {/* <Swiper
               className="myswiper"
               modules={[Navigation, Autoplay]}

@@ -7,11 +7,11 @@ const HeroOpensea = () => {
   return (
     <>
       <div className="bg-[#211C19] md:pt-48 md:pb-44 pt-16 pb-16">
-        <div className="container mx-auto 2xl:px-0 px-4 flex md:justify-between xl:gap-8 gap-5 gap-y-11 xl:flex-nowrap flex-wrap xl:max-w-[1200px] w-full">
+        <div className="container mx-auto 2xl:px-0 px-4 flex md:justify-between xl:gap-8 gap-5 gap-y-11 lg:flex-nowrap flex-wrap xl:max-w-[1200px] w-full">
           <div className="lg:max-w-[620px] w-full">
-            <h1 className="text-[#CEC2AC] md:text-[69px] text-[32px] font-normal lg:leading-[96.60px] eb">
+            <h1 className="text-[#CEC2AC] xl:text-[69px] md:text-5xl text-[32px] font-normal leading-[96.60px] eb">
               JOHN NELSON <br />
-              <span className="text-white md:text-[69px] text-[32px] font-bold">
+              <span className="text-white xl:text-[69px] md:text-5xl text-[32px] font-bold">
                 NFT
               </span>{" "}
               COLLECTION
@@ -22,7 +22,7 @@ const HeroOpensea = () => {
               testament to the power of passion, perseverance, and the belief
               that art can be a force for change
             </p>
-            <p className="text-[#CEC2AC] md:text-[26px] text-sm font-normal eb lg:leading-[33.80px]">
+            <p className="text-[#CEC2AC] md:text-[26px] text-sm font-normal eb leading-[33.80px]">
               DISCOVER A RARE COLLECTION OF NFT WORLD IN JOHN NELSON ARTIST 40
               YEARS OF PENCIL DRAWINGS
             </p>
