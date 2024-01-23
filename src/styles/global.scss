@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: "Inter", sans-serif !important;
+}
+
+.eb {
+  font-family: "EB Garamond", serif !important;
+}
+.clickcolor {
+  color: #cec2ac;
+  border-bottom: 1px solid #cec2ac;
+}
+.swiper-button-prev:after,
+.swiper-rtl .swiper-button-next:after {
+  content: url("https://tuk-cdn.s3.amazonaws.com/can-uploader/arrow-right-john1.png") !important;
+  left: -50px !important;
+}
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  font-size: 0px !important;
+}
+.swiper-button-prev {
+  width: 60px !important;
+  height: 60px !important;
+  border-radius: 100px !important;
+  border: 1px solid #b9ad87 !important;
+}
+.swiper-button-next:after,
+.swiper-rtl .swiper-button-next:after {
+  content: url("https://tuk-cdn.s3.amazonaws.com/can-uploader/arrow-right-nelson-1.png") !important;
+}
+.swiper-button-next:after,
+.swiper-button-next:after {
+  font-size: 0px !important;
+}
+.swiper-button-next {
+  width: 60px !important;
+  height: 60px !important;
+  border-radius: 100px !important;
+  border: 1px solid #b9ad87 !important;
+}
+.swiper-button-next:hover {
+  border: 1px solid #cec2ac !important;
+}
+.swiper-button-prev:hover {
+  border: 1px solid #cec2ac !important;
+}
+.swiper-button-next,
+.swiper-rtl .swiper-button-prev {
+  right: var(--swiper-navigation-sides-offset, 0px) !important;
+  left: auto;
+}
+.swiper-button-prev,
+.swiper-rtl .swiper-button-next {
+  left: var(--swiper-navigation-sides-offset, 0px) !important;
+  right: auto;
+}
+// @media (min-width:768px) {
+.myswiper1 > .swiper-button-next,
+.swiper-rtl .swiper-button-prev {
+  right: var(--swiper-navigation-sides-offset, 110px) !important;
+  left: auto;
+}
+.myswiper1 > .swiper-button-prev,
+.swiper-rtl .swiper-button-next {
+  left: var(--swiper-navigation-sides-offset, 110px) !important;
+  right: auto;
+}
+// }
+.myswiper1 > .swiper-button-prev {
+  top: var(--swiper-navigation-top-offset, 80%) !important;
+}
+.myswiper1 > .swiper-button-next {
+  top: var(--swiper-navigation-top-offset, 80%) !important;
+}
+@media (max-width: 768px) {
+  .swiper {
+    padding-bottom: 90px !important;
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    top: var(--swiper-navigation-top-offset, 92%) !important;
+  }
+  .myswiper > .swiper-button-prev {
+    top: var(--swiper-navigation-top-offset, 50%) !important;
+  }
+  .myswiper > .swiper-button-next {
+    top: var(--swiper-navigation-top-offset, 50%) !important;
+  }
+  .myswiper {
+    padding-bottom: 0px !important;
+  }
+  .myswiper1 {
+    padding-bottom: 0px !important;
+  }
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 35px !important;
+    height: 35px !important;
+  }
+  .swiper-button-prev {
+    margin-left: 135px;
+  }
+  .swiper-button-next {
+    margin-right: 135px;
+  }
+  .myswiper > .swiper-button-prev {
+    margin-left: 0px !important;
+  }
+  .myswiper > .swiper-button-next {
+    margin-right: 0px !important;
+  }
+  .myswiper1 > .swiper-button-prev {
+    margin-left: 0px !important;
+  }
+  .myswiper1 > .swiper-button-next {
+    margin-right: 0px !important;
+  }
+}
+@media (max-width: 380px) {
+  .swiper-button-prev {
+    margin-left: 125px;
+  }
+  .swiper-button-next {
+    margin-right: 125px;
+  }
+}
+@media (max-width: 360px) {
+  .swiper-button-prev {
+    margin-left: 120px;
+  }
+  .swiper-button-next {
+    margin-right: 120px;
+  }
+}
+@media (max-width: 350px) {
+  .swiper-button-prev {
+    margin-left: 105px;
+  }
+  .swiper-button-next {
+    margin-right: 105px;
+  }
+}
+.bgimg {
+  background-image: url("../assets/images/Home/artback.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  // background-attachment: fixed;
+  width: 100%;
+}
+.bgimg2 {
+  background-image: url("../assets/images/Home/v2.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  // background-attachment: fixed;
+  width: 100%;
+}
+.sidebar {
+  background: rgba(27, 23, 22, 0.6);
+  backdrop-filter: blur(8px);
+}
+//  .jazz > .swiper-wrapper > .swiper-slide {
+//   width: 400px!important;
+//   // margin: auto;
+// }
