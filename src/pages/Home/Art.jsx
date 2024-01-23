@@ -53,6 +53,7 @@ const Art = () => {
             <SwiperSlide>
               <div className="xl:max-w-[1300px] md:px-0  w-full mx-auto relative group duration-300 ease-in-out">
                 <video
+                className="border-4 border-[#B9AD87]"
                   ref={videoRef}
                   // autoPlay
                   // controls
@@ -86,22 +87,29 @@ const Art = () => {
                     <path d="M14 5m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" />
                   </svg>
                 ) : (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="absolute left-0 right-0 top-0 bottom-0 mx-auto my-auto z-20 cursor-pointer opacity-0 group-hover:opacity-100"
-                    width={60}
-                    height={60}
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="#ffffff"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+                  <img
+                    className="w-[80px] absolute left-0 right-0 top-0 bottom-0 mx-auto my-auto z-20 cursor-pointer opacity-0 group-hover:opacity-100"
                     onClick={handleSvgClick}
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M7 4v16l13 -8z" />
-                  </svg>
+                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/photo1706024586.jpeg"
+                    alt="Play"
+                  />
+
+                  // <svg
+                  //   xmlns="http://www.w3.org/2000/svg"
+                  //   className="absolute left-0 right-0 top-0 bottom-0 mx-auto my-auto z-20 cursor-pointer opacity-0 group-hover:opacity-100"
+                  //   width={60}
+                  //   height={60}
+                  //   viewBox="0 0 24 24"
+                  //   strokeWidth="1.5"
+                  //   stroke="#ffffff"
+                  //   fill="none"
+                  //   strokeLinecap="round"
+                  //   strokeLinejoin="round"
+                  //   onClick={handleSvgClick}
+                  // >
+                  //   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  //   <path d="M7 4v16l13 -8z" />
+                  // </svg>
                 )}
               </div>
             </SwiperSlide>
