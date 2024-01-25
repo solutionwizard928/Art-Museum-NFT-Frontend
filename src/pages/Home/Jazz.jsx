@@ -47,23 +47,23 @@ const Jazz = () => {
                   <Slider>
                     <Slide className="w-full" index={0}>
                       <div className="flex justify-center gap-10 flex-wrap">
-                        <div aria-label="Image" className="w-[349px]">
+                        <div aria-label="Image" className="xl:w-[349px] md:w-[270px]">
                           <img src={Ione} alt="One" />
                         </div>
-                        <div aria-label="Image" className="w-[349px]">
+                        <div aria-label="Image" className="xl:w-[349px] md:w-[270px]">
                           <img src={Itwo} alt="Two" />
                         </div>
-                        <div aria-label="Image" className="w-[349px]">
+                        <div aria-label="Image" className="xl:w-[349px] md:w-[270px]">
                           <img src={Ithree} alt="Three" />
                         </div>
                       </div>
                     </Slide>
                     <Slide className="w-full" index={1}>
                       <div className="flex justify-center gap-10 flex-wrap lg:flex-nowrap">
-                        <div aria-label="Image" className="w-[549px]">
+                        <div aria-label="Image" className="xl:w-[549px] md:w-[500px]">
                           <img src={s0} alt="Forth" />
                         </div>
-                        <div aria-label="Image" className="w-[549px]">
+                        <div aria-label="Image" className="xl:w-[549px] md:w-[500px]">
                           <img src={s2} alt="sda" />
                         </div>
                       </div>
@@ -94,9 +94,7 @@ const Jazz = () => {
                         </div>
                       </div>
                     </Slide> */}
-
                   </Slider>
-
 
                   <div
                     aria-label="button"
@@ -167,7 +165,10 @@ const Jazz = () => {
                     </Slide>
                   </Slider>
                 </div>
-                <div aria-label="button" className=" relative z-40 w-[90px] mx-auto mt-6">
+                <div
+                  aria-label="button"
+                  className=" relative z-40 w-[90px] mx-auto mt-6"
+                >
                   <div className="flex lg:gap-4 gap-4 justify-between">
                     <ButtonBack>
                       <div className="z-10 flex flex-shrink-0  justify-center items-center lg:w-16 lg:h-16 w-9 h-9 border border-[#b9ad87] rounded-full">

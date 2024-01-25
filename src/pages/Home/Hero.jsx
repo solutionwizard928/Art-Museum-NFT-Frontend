@@ -1,22 +1,31 @@
 import React, { useMemo, useState } from "react";
-import { usePrepareContractWrite, useContractWrite, useWaitForTransaction, useAccount, useNetwork, useContractRead  } from 'wagmi'
+import {
+  usePrepareContractWrite,
+  useContractWrite,
+  useWaitForTransaction,
+  useAccount,
+  useNetwork,
+  useContractRead,
+} from "wagmi";
 import Nelson from "../../assets/images/Home/nelson.png";
 import { NavLink } from "react-router-dom";
 import Social from "../../components/SocialIcon";
 import nft_abi from "./abi.json";
-import {NotificationContainer, NotificationManager} from 'react-notifications';
-import {ethers} from "ethers"
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
+import { ethers } from "ethers";
 import {
   useConnectModal,
   useAccountModal,
   useChainModal,
-} from '@rainbow-me/rainbowkit';
+} from "@rainbow-me/rainbowkit";
 
 const Hero = () => {
-
-  const price = 0.07
+  const price = 0.07;
   const { isConnected } = useAccount();
-  const {chain, chains} = useNetwork();
+  const { chain, chains } = useNetwork();
   const [counter, setCounter] = useState(1);
 
   const { openConnectModal } = useConnectModal();
@@ -31,43 +40,43 @@ const Hero = () => {
   // )
 
   const createNotification = (type, title, message, cb) => {
-      switch (type) {
-        case 'info':
-          NotificationManager.info(title, message, 5000, cb);
-          break;
-        case 'success':
-          NotificationManager.success(title, message, 5000, cb);
-          break;
-        case 'warning':
-          NotificationManager.warning(title, message, 5000, cb);
-          break;
-        case 'error':
-          NotificationManager.error(title, message, 5000, cb);
-          break;
-      }
+    switch (type) {
+      case "info":
+        NotificationManager.info(title, message, 5000, cb);
+        break;
+      case "success":
+        NotificationManager.success(title, message, 5000, cb);
+        break;
+      case "warning":
+        NotificationManager.warning(title, message, 5000, cb);
+        break;
+      case "error":
+        NotificationManager.error(title, message, 5000, cb);
+        break;
+    }
   };
 
   const cost = useMemo(() => {
     return (counter * price).toLocaleString();
-  }, [counter])
+  }, [counter]);
 
   const {
     config,
     error: prepareError,
     isError: isPrepareError,
   } = usePrepareContractWrite({
-    address: '0xcEA87eCAfa901b7D0942d61dC1A4f2F275267E0C',
+    address: "0xcEA87eCAfa901b7D0942d61dC1A4f2F275267E0C",
     abi: nft_abi,
-    functionName: 'mint',
+    functionName: "mint",
     args: [counter.toLocaleString()],
     // overrides: {value: ethers.parseEther("0.5")},
-    value: ethers.parseEther(cost)
-  })
-  const { data, error, isError, write } = useContractWrite(config)
- 
+    value: ethers.parseEther(cost),
+  });
+  const { data, error, isError, write } = useContractWrite(config);
+
   const { isLoading, isSuccess } = useWaitForTransaction({
     hash: data?.hash,
-  })
+  });
 
   const handleClick1 = () => {
     setCounter(counter + 1);
@@ -76,17 +85,14 @@ const Hero = () => {
     setCounter(counter > 1 ? counter - 1 : 1);
   };
 
-
-
   return (
     <>
-      
       <div className="bg-[#211C19] md:pt-48 md:pb-44 pt-16 pb-16">
-        <div className="container mx-auto 2xl:px-0 px-4 flex md:justify-between xl:gap-8 gap-5 gap-y-11 xl:flex-nowrap flex-wrap xl:max-w-[1200px] w-full">
+        <div className="container mx-auto 2xl:px-0 px-4 flex md:justify-between xl:gap-8 gap-5 gap-y-11 lg:flex-nowrap flex-wrap xl:max-w-[1200px] w-full">
           <div className="lg:max-w-[620px] w-full">
-            <h1 className="text-[#CEC2AC] md:text-[69px] text-[32px] font-normal lg:leading-[96.60px] eb">
+            <h1 className="text-[#CEC2AC] xl:text-[69px] md:text-5xl text-[32px] font-normal leading-[96.60px] eb">
               JOHN NELSON <br />
-              <span className="text-white md:text-[69px] text-[32px] font-bold">
+              <span className="text-white xl:text-[69px] md:text-5xl text-[32px] font-bold">
                 NFT
               </span>{" "}
               COLLECTION
@@ -97,7 +103,7 @@ const Hero = () => {
               testament to the power of passion, perseverance, and the belief
               that art can be a force for change
             </p>
-            <p className="text-[#CEC2AC] md:text-[26px] text-sm font-normal eb lg:leading-[33.80px]">
+            <p className="text-[#CEC2AC] md:text-[26px] text-sm font-normal eb leading-[33.80px]">
               DISCOVER A RARE COLLECTION OF NFT WORLD IN JOHN NELSON ARTIST 40
               YEARS OF PENCIL DRAWINGS
             </p>
@@ -114,14 +120,13 @@ const Hero = () => {
               <p className="text-[#EBEDF0] md:text-base text-xs font-normal">
                 {isLoading}{" "}
                 <span className="text-[#C9C8C8] md:text-base text-xs font-normal">
-                 3 / 7777
+                  3 / 7777
                 </span>
               </p>
             </div>
             <div className="flex justify-between gap-4 items-center mt-3">
-
               <p className="text-white md:text-[22px] text-base font-bold">
-                { cost } ETH
+                {cost} ETH
               </p>
               <div className="flex items-center gap-4">
                 <button onClick={handleClick2}>
@@ -177,14 +182,28 @@ const Hero = () => {
                 </button>
               </div>
             </div>
-            <button onClick={() => {
-              if(!isConnected) createNotification("error", "Connect your ethereum wallet", "", openConnectModal);
-              else {
-                if(chain.unsupported) createNotification("warning", "Switch Network", "Ethereum", openChainModal);
-                else write();
-              }
-              
-            }} className="flex mt-4 group items-center justify-center group h-[60px] w-full gap-3 bg-[#CEC2AC] text-center text-[#46382D] md:text-xl text-base md:font-medium font-semibold hover:bg-[#5D564C] hover:text-[#CEC2AC] ease-in-out transform duration-300">
+            <button
+              onClick={() => {
+                if (!isConnected)
+                  createNotification(
+                    "error",
+                    "Connect your ethereum wallet",
+                    "",
+                    openConnectModal
+                  );
+                else {
+                  if (chain.unsupported)
+                    createNotification(
+                      "warning",
+                      "Switch Network",
+                      "Ethereum",
+                      openChainModal
+                    );
+                  else write();
+                }
+              }}
+              className="flex mt-4 group items-center justify-center group h-[60px] w-full gap-3 bg-[#CEC2AC] text-center text-[#46382D] md:text-xl text-base md:font-medium font-semibold hover:bg-[#5D564C] hover:text-[#CEC2AC] ease-in-out transform duration-300"
+            >
               <svg
                 width={30}
                 height={29}
