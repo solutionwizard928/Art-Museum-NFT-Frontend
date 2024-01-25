@@ -17,7 +17,7 @@ export const NavbarList = [
   {
     id: 3,
     name: "JN Studios",
-    link: "https://johnnelson.smugmug.com/",
+    link: "https://palmsnegril2.wixsite.com/jnstudios",
     target: "_blank"
   },
   {

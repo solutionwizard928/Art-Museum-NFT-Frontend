@@ -4,6 +4,7 @@ import V1 from "../../assets/images/Home/v1.png";
 import { Navigation, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import airbnb from "./airbnb.mp4";
+import airbnb_poster from "./poster_airbnb.png";
 import "swiper/css";
 import "swiper/css/navigation";
 const Vacation = () => {
@@ -50,12 +51,14 @@ const Vacation = () => {
                 loop
                 id="myVideo"
                 onClick={handleSvgClick}
+                poster={airbnb_poster}
+                
               >
-                {/* <source src={airbnb} type="video/mp4" /> */}
-                <source
+                <source src={airbnb} type="video/mp4" />
+                {/* <source
                   src="https://jnelson.web.app/assets/airbnb-73a974e9.mp4"
                   type="video/mp4"
-                />
+                /> */}
               </video>
               {isPlaying ? (
                 <svg
@@ -77,7 +80,7 @@ const Vacation = () => {
                 </svg>
               ) : (
                 <img
-                  className="w-[80px] absolute left-0 right-0 top-0 bottom-0 mx-auto my-auto z-20 cursor-pointer opacity-0 group-hover:opacity-100"
+                  className="w-[80px] absolute left-0 right-0 top-0 bottom-0 mx-auto my-auto z-20"
                   onClick={handleSvgClick}
                   src="https://tuk-cdn.s3.amazonaws.com/can-uploader/photo1706024586.jpeg"
                   alt="Play"

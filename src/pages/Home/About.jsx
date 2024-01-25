@@ -38,7 +38,7 @@ const About = () => {
               colors of the row houses, the smiling faces of his friends, and
               the bustling streets.{" "}
             </p>
-            <button className="flex md:mt-6 mt-4 items-center border border-transparent hover:border-[#CEC2AC] justify-center group md:h-[60px] md:w-[192px] w-[176px] h-11 gap-3 bg-[#CEC2AC] text-center text-[#46382D] text-lg font-medium hover:bg-[#5D564C] hover:text-[#CEC2AC] ease-in-out transform duration-300">
+            <a href="https://palmsnegril2.wixsite.com/jnstudios" rel="noreferrer" target="_blank" className="flex md:mt-6 mt-4 items-center border border-transparent hover:border-[#CEC2AC] justify-center group md:h-[60px] md:w-[192px] w-[176px] h-11 gap-3 bg-[#CEC2AC] text-center text-[#46382D] text-lg font-medium hover:bg-[#5D564C] hover:text-[#CEC2AC] ease-in-out transform duration-300">
               Read More
               <svg
                 width={24}
@@ -66,7 +66,7 @@ const About = () => {
                   strokeLinejoin="round"
                 />
               </svg>
-            </button>
+            </a>
           </div>
         </div>
       </div>

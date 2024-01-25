@@ -6,6 +6,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import johnvideo from "./Draft_2.mp4";
+import poster_logo from "./poster_logo.png"
+
+
 const Art = () => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -60,13 +63,14 @@ const Art = () => {
                   muted
                   loop
                   id="myVideo"
+                  poster={poster_logo}
                   onClick={handleSvgClick}
                 >
-                  {/* <source src={johnvideo} type="video/mp4" /> */}
-                  <source
+                  <source src={johnvideo} type="video/mp4" />
+                  {/* <source
                     src="https://jnelson.web.app/assets/Draft_2-afbda3b1.mp4"
                     type="video/mp4"
-                  />
+                  /> */}
                 </video>
                 {isPlaying ? (
                   <svg
@@ -88,7 +92,7 @@ const Art = () => {
                   </svg>
                 ) : (
                   <img
-                    className="w-[80px] absolute left-0 right-0 top-0 bottom-0 mx-auto my-auto z-20 cursor-pointer opacity-0 group-hover:opacity-100"
+                    className="w-[80px] absolute left-0 right-0 top-0 bottom-0 mx-auto my-auto z-20 cursor-pointer"
                     onClick={handleSvgClick}
                     src="https://tuk-cdn.s3.amazonaws.com/can-uploader/photo1706024586.jpeg"
                     alt="Play"
