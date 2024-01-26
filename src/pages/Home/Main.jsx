@@ -10,12 +10,12 @@ const Main = () => {
   return (
     <>
       <Hero />
-      <About />
+      {/* <About />
       <Jazz />
       <Art />
       <Vacation />
       <Gallery />
-      <Faq />
+      <Faq /> */}
     </>
   );
 };
