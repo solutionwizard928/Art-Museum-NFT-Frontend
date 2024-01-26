@@ -11,9 +11,9 @@ function MyRoutes() {
         <Base>
           <Routes>
             <Route path="/" element={<Home></Home>}></Route>
-            <Route path="/counter" element={<HeroCounter></HeroCounter>}></Route>
+            {/* <Route path="/counter" element={<HeroCounter></HeroCounter>}></Route>
             <Route path="/mint" element={<HeroMint></HeroMint>}></Route>
-            <Route path="/sea" element={<HeroOpensea></HeroOpensea>}></Route>
+            <Route path="/sea" element={<HeroOpensea></HeroOpensea>}></Route> */}
           </Routes>
         </Base>
       </BrowserRouter>
