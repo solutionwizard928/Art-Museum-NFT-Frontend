@@ -5,7 +5,8 @@ import MyRoutes from './routers';
 function App() {
   return (
     <>
-      <MyRoutes></MyRoutes>
+      {/* <MyRoutes></MyRoutes> */}
+      <h2>Hello, world</h2>
     </>
   )
 }
