@@ -90,7 +90,7 @@ const Hero = () => {
       <div className="bg-[#211C19] md:pt-48 md:pb-44 pt-16 pb-16">
         <div className="container mx-auto 2xl:px-0 px-4 flex md:justify-between xl:gap-8 gap-5 gap-y-11 lg:flex-nowrap flex-wrap xl:max-w-[1200px] w-full">
           <div className="lg:max-w-[620px] w-full">
-            <h1 className="text-[#CEC2AC] xl:text-[69px] md:text-5xl text-[32px] font-normal leading-[96.60px] eb">
+            <h1 className="text-[#CEC2AC] xl:text-[69px] md:text-5xl text-[32px] font-normal md:leading-[96.60px] eb">
               JOHN NELSON <br />
               <span className="text-white xl:text-[69px] md:text-5xl text-[32px] font-bold">
                 NFT
