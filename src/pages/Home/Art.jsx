@@ -66,7 +66,7 @@ const Art = () => {
                   poster={poster_logo}
                   onClick={handleSvgClick}
                 >
-                  {/* <source src={johnvideo} type="video/mp4" /> */}
+                  <source src={johnvideo} type="video/mp4" />
                   {/* <source
                     src="https://jnelson.web.app/assets/Draft_2-afbda3b1.mp4"
                     type="video/mp4"

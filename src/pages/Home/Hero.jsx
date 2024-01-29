@@ -1,35 +1,35 @@
-import React, { useMemo, useState } from "react";
-import {
-  usePrepareContractWrite,
-  useContractWrite,
-  useWaitForTransaction,
-  useAccount,
-  useNetwork,
-  useContractRead,
-} from "wagmi";
+// import React, { useMemo, useState } from "react";
+// import {
+//   usePrepareContractWrite,
+//   useContractWrite,
+//   useWaitForTransaction,
+//   useAccount,
+//   useNetwork,
+//   useContractRead,
+// } from "wagmi";
 import Nelson from "../../assets/images/Home/nelson.png";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import Social from "../../components/SocialIcon";
-import nft_abi from "./abi.json";
-import {
-  NotificationContainer,
-  NotificationManager,
-} from "react-notifications";
-import { ethers } from "ethers";
-import {
-  useConnectModal,
-  useAccountModal,
-  useChainModal,
-} from "@rainbow-me/rainbowkit";
+// import nft_abi from "./abi.json";
+// import {
+//   NotificationContainer,
+//   NotificationManager,
+// } from "react-notifications";
+// import { ethers } from "ethers";
+// import {
+//   useConnectModal,
+//   useAccountModal,
+//   useChainModal,
+// } from "@rainbow-me/rainbowkit";
 
 const Hero = () => {
-  const price = 0.07;
-  const { isConnected } = useAccount();
-  const { chain, chains } = useNetwork();
-  const [counter, setCounter] = useState(1);
+  // const price = 0.07;
+  // const { isConnected } = useAccount();
+  // const { chain, chains } = useNetwork();
+  // const [counter, setCounter] = useState(1);
 
-  const { openConnectModal } = useConnectModal();
-  const { openChainModal } = useChainModal();
+  // const { openConnectModal } = useConnectModal();
+  // const { openChainModal } = useChainModal();
 
   // const { data, isError: isErrorTotalSupply, isLoading: isLoadingTotalSupply } = useContractRead(
   //   {
@@ -39,51 +39,51 @@ const Hero = () => {
   //   'totalSupply',
   // )
 
-  const createNotification = (type, title, message, cb) => {
-    switch (type) {
-      case "info":
-        NotificationManager.info(title, message, 5000, cb);
-        break;
-      case "success":
-        NotificationManager.success(title, message, 5000, cb);
-        break;
-      case "warning":
-        NotificationManager.warning(title, message, 5000, cb);
-        break;
-      case "error":
-        NotificationManager.error(title, message, 5000, cb);
-        break;
-    }
-  };
+  // const createNotification = (type, title, message, cb) => {
+  //   switch (type) {
+  //     case "info":
+  //       NotificationManager.info(title, message, 5000, cb);
+  //       break;
+  //     case "success":
+  //       NotificationManager.success(title, message, 5000, cb);
+  //       break;
+  //     case "warning":
+  //       NotificationManager.warning(title, message, 5000, cb);
+  //       break;
+  //     case "error":
+  //       NotificationManager.error(title, message, 5000, cb);
+  //       break;
+  //   }
+  // };
 
-  const cost = useMemo(() => {
-    return (counter * price).toLocaleString();
-  }, [counter]);
+  // const cost = useMemo(() => {
+  //   return (counter * price).toLocaleString();
+  // }, [counter]);
 
-  const {
-    config,
-    error: prepareError,
-    isError: isPrepareError,
-  } = usePrepareContractWrite({
-    address: "0xcEA87eCAfa901b7D0942d61dC1A4f2F275267E0C",
-    abi: nft_abi,
-    functionName: "mint",
-    args: [counter.toLocaleString()],
-    // overrides: {value: ethers.parseEther("0.5")},
-    value: ethers.parseEther(cost),
-  });
-  const { data, error, isError, write } = useContractWrite(config);
+  // const {
+  //   config,
+  //   error: prepareError,
+  //   isError: isPrepareError,
+  // } = usePrepareContractWrite({
+  //   address: "0xcEA87eCAfa901b7D0942d61dC1A4f2F275267E0C",
+  //   abi: nft_abi,
+  //   functionName: "mint",
+  //   args: [counter.toLocaleString()],
+  //   // overrides: {value: ethers.parseEther("0.5")},
+  //   value: ethers.parseEther(cost),
+  // });
+  // const { data, error, isError, write } = useContractWrite(config);
 
-  const { isLoading, isSuccess } = useWaitForTransaction({
-    hash: data?.hash,
-  });
+  // const { isLoading, isSuccess } = useWaitForTransaction({
+  //   hash: data?.hash,
+  // });
 
-  const handleClick1 = () => {
-    setCounter(counter + 1);
-  };
-  const handleClick2 = () => {
-    setCounter(counter > 1 ? counter - 1 : 1);
-  };
+  // const handleClick1 = () => {
+  //   setCounter(counter + 1);
+  // };
+  // const handleClick2 = () => {
+  //   setCounter(counter > 1 ? counter - 1 : 1);
+  // };
 
   return (
     <>
@@ -98,7 +98,7 @@ const Hero = () => {
               COLLECTION
             </h1>
             <p className="text-[#B9AD87] md:text-[17px] text-xs font-normal lg:leading-7 leading-5 my-5">
-              John Nelson's journey from a young boy in the inner city of
+              John Nelson`s journey from a young boy in the inner city of
               Washington DC. to a renowned and compassionate artist was a
               testament to the power of passion, perseverance, and the belief
               that art can be a force for change
@@ -118,7 +118,7 @@ const Hero = () => {
                 John Nelson NFT
               </p>
               <p className="text-[#EBEDF0] md:text-base text-xs font-normal">
-                {isLoading}{" "}
+                {/* {isLoading}{" "} */}
                 <span className="text-[#C9C8C8] md:text-base text-xs font-normal">
                   3 / 7777
                 </span>
@@ -126,10 +126,12 @@ const Hero = () => {
             </div>
             <div className="flex justify-between gap-4 items-center mt-3">
               <p className="text-white md:text-[22px] text-base font-bold">
-                {cost} ETH
+                {0.07} ETH
               </p>
               <div className="flex items-center gap-4">
-                <button onClick={handleClick2}>
+                <button 
+                // onClick={handleClick2}
+                >
                   <svg
                     className="cursor-pointer"
                     width={31}
@@ -152,9 +154,11 @@ const Hero = () => {
                   </svg>
                 </button>
                 <p className="text-center text-white md:text-[22px] text-base font-normal">
-                  {counter}
+                  {100}
                 </p>
-                <button onClick={handleClick1}>
+                <button 
+                // onClick={handleClick1}
+                >
                   <svg
                     className="cursor-pointer"
                     width={30}
@@ -183,25 +187,25 @@ const Hero = () => {
               </div>
             </div>
             <button
-              onClick={() => {
-                if (!isConnected)
-                  createNotification(
-                    "error",
-                    "Connect your ethereum wallet",
-                    "",
-                    openConnectModal
-                  );
-                else {
-                  if (chain.unsupported)
-                    createNotification(
-                      "warning",
-                      "Switch Network",
-                      "Ethereum",
-                      openChainModal
-                    );
-                  else write();
-                }
-              }}
+              // onClick={() => {
+              //   if (!isConnected)
+              //     createNotification(
+              //       "error",
+              //       "Connect your ethereum wallet",
+              //       "",
+              //       openConnectModal
+              //     );
+              //   else {
+              //     if (chain.unsupported)
+              //       createNotification(
+              //         "warning",
+              //         "Switch Network",
+              //         "Ethereum",
+              //         openChainModal
+              //       );
+              //     else write();
+              //   }
+              // }}
               className="flex mt-4 group items-center justify-center group h-[60px] w-full gap-3 bg-[#CEC2AC] text-center text-[#46382D] md:text-xl text-base md:font-medium font-semibold hover:bg-[#5D564C] hover:text-[#CEC2AC] ease-in-out transform duration-300"
             >
               <svg
@@ -262,7 +266,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <NotificationContainer />
+      {/* <NotificationContainer /> */}
     </>
   );
 };

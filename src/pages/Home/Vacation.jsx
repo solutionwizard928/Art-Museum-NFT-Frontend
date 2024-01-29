@@ -54,7 +54,7 @@ const Vacation = () => {
                 poster={airbnb_poster}
                 
               >
-                {/* <source src={airbnb} type="video/mp4" /> */}
+                <source src={airbnb} type="video/mp4" />
                 {/* <source
                   src="https://jnelson.web.app/assets/airbnb-73a974e9.mp4"
                   type="video/mp4"

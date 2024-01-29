@@ -4,7 +4,7 @@ function Header(props) {
   return (
     <header id="Header">
 
-      <Navbar></Navbar>
+      {/* <Navbar></Navbar> */}
     </header>
   );
 }
