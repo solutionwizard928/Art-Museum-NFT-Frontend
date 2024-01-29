@@ -9,13 +9,13 @@ import Faq from "./Faq";
 const Main = () => {
   return (
     <>
-      {/* <Hero /> */}
+      <Hero />
       <About />
-      {/* <Jazz />
+      <Jazz />
       <Art />
       <Vacation />
       <Gallery />
-      <Faq /> */}
+      <Faq />
     </>
   );
 };
