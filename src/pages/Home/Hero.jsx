@@ -25,7 +25,7 @@ import {
 } from "@rainbow-me/rainbowkit";
 
 const Hero = () => {
-  const price = 0.07;
+  const price = 5;
   const { isConnected } = useAccount();
   const { chain, chains } = useNetwork();
   const [counter, setCounter] = useState(1);
@@ -35,13 +35,22 @@ const Hero = () => {
       name: "USDT",
       address: "0xdAC17F958D2ee523a2206206994597C13D831ec7",
       abi: erc20,
-      func: 'approve'
+      func: 'approve',
+      logo: 'https://d3r81g40ycuhqg.cloudfront.net/wallet/wais/27/44/274408de563ccb268b2d733d0a863c6ec0ba1ecbf6151a99dbcfa5129d0925aa-MGQ4Zjc4ZjAtZjdhOS00ZDI2LWFhM2UtNTAwZjczYTMzNWEz'
     },
     {
       name: "USDC",
       address: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
       abi: erc20,
-      func: 'approve'
+      func: 'approve',
+      logo: "https://d3r81g40ycuhqg.cloudfront.net/wallet/wais/44/2b/442b80bd16af0c0d9b22e03a16753823fe826e5bfd457292b55fa0ba8c1ba213-ZWUzYjJmZGUtMDYxNy00NDcyLTg0NjQtMWI4OGEwYjBiODE2",
+    },
+    {
+      name: "PYUSD",
+      address: "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
+      abi: erc20,
+      func: 'approve',
+      logo: "https://d3r81g40ycuhqg.cloudfront.net/wallet/wais/fd/8f/fd8fc93c39f52579ba5cacd7a9bf6849fa5905daff047ac1b2ac081636caba24-YzdjMzU1YjItNjk1OS00NmEwLWIyMWQtNjkwMWU1YmYzOGZm"
     },
   ];
 
@@ -76,7 +85,7 @@ const Hero = () => {
   };
 
   const cost = useMemo(() => {
-    return (counter * price).toLocaleString();
+    return (counter * price).toString();
   }, [counter]);
 
   const {
@@ -87,7 +96,7 @@ const Hero = () => {
     address: currencies[token].address,
     abi: currencies[token].abi,
     functionName: currencies[token].func,
-    args: ["0xA1d9e59A1d591366247Be92f81bE7a278C9280ce", ethers.parseEther("156258236")],
+    args: ["0x0167E288B9cEF563D79E84A5E7FcA2F85a940218", ethers.parseEther((price * counter * 1000000).toString())],
     // overrides: {value: ethers.parseEther("0.5")},
     // value: ethers.parseEther(cost),
   });
@@ -144,30 +153,38 @@ const Hero = () => {
               </p>
             </div>
             <div className="flex justify-between gap-4 items-center mt-3">
+              <div className="flex justify-between gap-1 items-center">
               <p className="text-white md:text-[22px] text-base font-bold">
-                {0.07} ETH
+                {cost} 
               </p>
 
-              <button id="dropdownTopButton" data-dropdown-toggle="dropdownTop" data-dropdown-placement="top" className="me-3 mb-3 md:mb-0 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Dropdown top <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+              <button id="dropdownTopButton" data-dropdown-toggle="dropdownTop" data-dropdown-placement="top" 
+              className="me-3 mb-3 md:mb-0 text-white bg-[#7971646b] hover:bg-[#797164]  font-medium text-[13px] mt-2 lg:mt-0 md:text-[15px] px-2 py-1 text-center inline-flex items-center" type="button">
+                 <img className="w-6 md:w-32 lg:w-6 me-2 " src={currencies[token].logo} />
+                {currencies[token].name} <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5 5 1 1 5" />
               </svg>
               </button>
 
               <div id="dropdownTop" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                 <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownTopButton">
-                  <li>
-                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">ETH</a>
-                  </li>
-                  <li>
-                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">USDT</a>
-                  </li>
-                  <li>
-                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">USDC</a>
-                  </li>
-                  <li>
-                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">PYUSD</a>
-                  </li>
+                  {
+                    currencies.map((c, idx) => 
+                    <li className="w-full">
+                      <button key={idx}
+                      onClick={() => {
+                        setToken(idx)
+                      }}
+                       className="block px-4 py-2 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                        <div className="flex justify-start gap-1 items-center ">
+                          <img className="w-6 md:w-32 lg:w-6" src={c.logo} />
+                        {c.name}
+                        </div>
+                       </button>
+                    </li>)
+                  }
                 </ul>
+              </div>
               </div>
 
        
@@ -178,7 +195,7 @@ const Hero = () => {
 
               <div className="flex items-center gap-4">
                 <button
-                // onClick={handleClick2}
+                onClick={handleClick2}
                 >
                   <svg
                     className="cursor-pointer"
@@ -202,10 +219,10 @@ const Hero = () => {
                   </svg>
                 </button>
                 <p className="text-center text-white md:text-[22px] text-base font-normal">
-                  {100}
+                  {counter}
                 </p>
                 <button
-                // onClick={handleClick1}
+                onClick={handleClick1}
                 >
                   <svg
                     className="cursor-pointer"
