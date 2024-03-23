@@ -25,7 +25,7 @@ import {
 } from "@rainbow-me/rainbowkit";
 
 const Hero = () => {
-  const price = 5;
+  const price = 0.07;
   const { isConnected } = useAccount();
   const { chain, chains } = useNetwork();
   const [counter, setCounter] = useState(1);
@@ -85,7 +85,7 @@ const Hero = () => {
   };
 
   const cost = useMemo(() => {
-    return (counter * price).toString();
+    return (counter * price).toLocaleString();
   }, [counter]);
 
   const {
@@ -155,36 +155,10 @@ const Hero = () => {
             <div className="flex justify-between gap-4 items-center mt-3">
               <div className="flex justify-between gap-1 items-center">
               <p className="text-white md:text-[22px] text-base font-bold">
-                {cost} 
+                {cost} ETH
               </p>
 
-              <button id="dropdownTopButton" data-dropdown-toggle="dropdownTop" data-dropdown-placement="top" 
-              className="me-3 mb-3 md:mb-0 text-white bg-[#7971646b] hover:bg-[#797164]  font-medium text-[13px] mt-2 lg:mt-0 md:text-[15px] px-2 py-1 text-center inline-flex items-center" type="button">
-                 <img className="w-6 md:w-32 lg:w-6 me-2 " src={currencies[token].logo} />
-                {currencies[token].name} <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5 5 1 1 5" />
-              </svg>
-              </button>
-
-              <div id="dropdownTop" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownTopButton">
-                  {
-                    currencies.map((c, idx) => 
-                    <li className="w-full">
-                      <button key={idx}
-                      onClick={() => {
-                        setToken(idx)
-                      }}
-                       className="block px-4 py-2 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                        <div className="flex justify-start gap-1 items-center ">
-                          <img className="w-6 md:w-32 lg:w-6" src={c.logo} />
-                        {c.name}
-                        </div>
-                       </button>
-                    </li>)
-                  }
-                </ul>
-              </div>
+              
               </div>
 
        
