@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
   usePrepareContractWrite,
   useContractWrite,
@@ -93,12 +93,12 @@ const Hero = () => {
     error: prepareError,
     isError: isPrepareError,
   } = usePrepareContractWrite({
-    address: currencies[token].address,
-    abi: currencies[token].abi,
-    functionName: currencies[token].func,
-    args: ["0x0167E288B9cEF563D79E84A5E7FcA2F85a940218", ethers.parseEther((price * counter * 1000000).toString())],
+    address: "0xc608b3B1645E5B0a75F56796aDa89270947793eD",
+    abi: nft_abi,
+    functionName: "mint",
+    args: [counter],
     // overrides: {value: ethers.parseEther("0.5")},
-    // value: ethers.parseEther(cost),
+    value: ethers.parseEther((price * counter).toString()),
   });
   const { data, error, isError, write } = useContractWrite(config);
 
@@ -112,6 +112,10 @@ const Hero = () => {
   const handleClick2 = () => {
     setCounter(counter > 1 ? counter - 1 : 1);
   };
+
+  useEffect(() => {
+    console.log(prepareError)
+  }, [prepareError])
 
   return (
     <>
@@ -300,7 +304,7 @@ const Hero = () => {
                   strokeLinejoin="round"
                 />
               </svg>
-              Buy Now
+              {isPrepareError ? "Insufficnet ETH" : "Buy Now"}
             </button>
           </div>
         </div>
