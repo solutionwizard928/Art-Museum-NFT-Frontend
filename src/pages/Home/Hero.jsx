@@ -152,7 +152,7 @@ const Hero = () => {
               <p className="text-[#EBEDF0] md:text-base text-xs font-normal">
                 {/* {isLoading}{" "} */}
                 <span className="text-[#C9C8C8] md:text-base text-xs font-normal">
-                  3 / 7777
+                  4 / 7777
                 </span>
               </p>
             </div>
